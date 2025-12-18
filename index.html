@@ -1,7 +1,44 @@
-<div style="border: 1px solid #ccc; padding: 20px; border-radius: 10px; font-family: sans-serif; background-color: #f9f9f9;">
-  <h2 style="color: #1DB954;">Мой Проект</h2>
-  <p style="font-size: 14px; line-height: 1.6;">Описание проекта, которое сложно поддерживать при таком подходе.</p>
-  <button style="background-color: #1DB954; color: white; border: none; padding: 10px 20px; border-radius: 20px; cursor: pointer;">
-    Слушать в Spotify
-  </button>
-</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Portfolio | Имя Фамилия</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">DevName</div>
+            <ul>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Привет, я Junior Developer</h1>
+            <p>Создаю решения на Python и JS. Фанат чистого кода и Spotify.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Мои проекты</h2>
+            <div class="grid">
+                <article class="card">
+                    <h3>Spotify API Integration</h3>
+                    <p>Веб-сервис для анализа ваших плейлистов.</p>
+                    <div class="tags"><span>JavaScript</span> <span>API</span></div>
+                    <a href="#" class="github-link">View Code</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 | Построено с помощью CSS Grid и Flexbox</p>
+    </footer>
+</body>
+</html>
