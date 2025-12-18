@@ -1,245 +1,390 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <title>Портфолио абитуриента | Имя Фамилия</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио Абитуриента | [Ваше Имя]</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #64748b;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--white);
+            scroll-behavior: smooth;
+        }
 
-  <style>
-    /* ================== BASE ================== */
-    :root {
-      --bg: #f5f7fa;
-      --text: #1f2937;
-      --primary: #2563eb;
-      --secondary: #64748b;
-      --card: #ffffff;
-    }
+        /* --- Навигация --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    body.dark {
-      --bg: #0f172a;
-      --text: #e5e7eb;
-      --card: #020617;
-    }
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      scroll-behavior: smooth;
-    }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: var(--transition);
+        }
 
-    section {
-      padding: 80px 10%;
-    }
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
 
-    h2 {
-      margin-bottom: 30px;
-      font-size: 2rem;
-    }
+        .burger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
 
-    /* ================== HEADER ================== */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: var(--card);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 10%;
-      z-index: 1000;
-    }
+        .burger span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-main);
+            border-radius: 2px;
+        }
 
-    nav a {
-      margin-left: 20px;
-      font-weight: 500;
-    }
+        /* --- Hero Секция --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            padding: 0 1rem;
+        }
 
-    .burger {
-      display: none;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-bg);
+        }
 
-    /* ================== HERO ================== */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
 
-    .hero-content {
-      max-width: 600px;
-    }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
 
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-    }
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
 
-    .hero p {
-      color: var(--secondary);
-      margin-bottom: 30px;
-    }
+        .btn-primary {
+            background: var(--primary-color);
+            color: var(--white);
+        }
 
-    .btn {
-      padding: 12px 25px;
-      border-radius: 8px;
-      background: var(--primary);
-      color: #fff;
-      margin-right: 10px;
-      display: inline-block;
-    }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
 
-    /* ================== SKILLS ================== */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
 
-    .skill-card {
-      background: var(--card);
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-    }
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
 
-    .skill-card i {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 10px;
-    }
+        /* --- Секции --- */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-    /* ================== PROJECTS ================== */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
-    }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
 
-    .project-card {
-      background: var(--card);
-      padding: 20px;
-      border-radius: 12px;
-    }
+        /* Навыки */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
 
-    /* ================== CONTACT ================== */
-    .contact-icons a {
-      font-size: 1.5rem;
-      margin-right: 15px;
-      color: var(--primary);
-    }
+        .skill-card {
+            padding: 2rem;
+            background: var(--light-bg);
+            border-radius: 12px;
+            text-align: center;
+            transition: var(--transition);
+        }
 
-    /* ================== RESPONSIVE ================== */
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-      }
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
 
-      nav.active {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        right: 10%;
-        background: var(--card);
-        padding: 20px;
-        border-radius: 10px;
-      }
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
 
-      .burger {
-        display: block;
-      }
-    }
-  </style>
+        /* Проекты */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-img {
+            height: 200px;
+            background: #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 { margin-bottom: 0.5rem; }
+        .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
+
+        .github-link {
+            color: var(--dark-bg);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Футер */
+        footer {
+            background: var(--dark-bg);
+            color: var(--white);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover { color: var(--primary-color); }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Для упрощения в одном файле */
+            }
+            .burger { display: flex; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <strong>Имя Фамилия</strong>
-  <nav id="nav">
-    <a href="#home">Главная</a>
-    <a href="cv.html">CV</a>
-    <a href="#projects">Проекты</a>
-    <a href="#skills">Навыки</a>
-    <a href="#contact">Контакты</a>
-  </nav>
-  <i class="fas fa-bars burger" onclick="toggleMenu()"></i>
-</header>
+    <header>
+        <nav>
+            <a href="#" class="logo">DevFuture</a>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="cv.html">Резюме (CV)</a></li>
+                <li><a href="#projects">Проекты</a></li>
+                <li><a href="#skills">Навыки</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+            <div class="burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Я Имя Фамилия,<br>будущий студент Computer Science</h1>
-    <p>Цель — поступление в университет и развитие в сфере программной инженерии и веб-разработки.</p>
-    <a href="cv.html" class="btn">Посмотреть CV</a>
-    <a href="#projects" class="btn">Мои проекты</a>
-  </div>
-</section>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1>Привет, я [Имя Фамилия]</h1>
+                <p>Будущий студент направления "Программная инженерия". Увлекаюсь веб-разработкой и алгоритмами. Стремлюсь создавать решения, которые меняют мир.</p>
+                <div class="btn-group">
+                    <a href="cv.html" class="btn btn-primary">Посмотреть CV</a>
+                    <a href="#projects" class="btn btn-outline">Мои проекты</a>
+                </div>
+            </div>
+        </section>
 
-<section id="skills">
-  <h2>Ключевые навыки</h2>
-  <div class="skills-grid">
-    <div class="skill-card"><i class="fab fa-js"></i><p>JavaScript</p></div>
-    <div class="skill-card"><i class="fab fa-python"></i><p>Python</p></div>
-    <div class="skill-card"><i class="fab fa-html5"></i><p>HTML5 / CSS3</p></div>
-    <div class="skill-card"><i class="fab fa-git-alt"></i><p>Git & GitHub</p></div>
-  </div>
-</section>
+        <section id="skills">
+            <h2 class="section-title">Ключевые навыки</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <i class="fab fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Создание интерактивных веб-приложений и работа с DOM.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-python"></i>
+                    <h3>Python</h3>
+                    <p>Основы Data Science и автоматизация задач.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fab fa-react"></i>
+                    <h3>React</h3>
+                    <p>Изучаю построение компонентных интерфейсов.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>SQL</h3>
+                    <p>Проектирование простых баз данных и запросов.</p>
+                </div>
+            </div>
+        </section>
 
-<section id="projects">
-  <h2>Избранные проекты</h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <h3>Task Manager</h3>
-      <p>Веб-приложение для управления задачами</p>
-      <a href="#">GitHub</a>
-    </div>
-    <div class="project-card">
-      <h3>Weather App</h3>
-      <p>Получение погоды через API</p>
-      <a href="#">GitHub</a>
-    </div>
-    <div class="project-card">
-      <h3>Portfolio Website</h3>
-      <p>Адаптивный сайт-портфолио</p>
-      <a href="#">GitHub</a>
-    </div>
-  </div>
-</section>
+        <section id="projects">
+            <h2 class="section-title">Избранные проекты</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img" style="background: #3b82f6;">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Smart Task Manager</h3>
+                        <p>Приложение для управления задачами с локальным хранением данных.</p>
+                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background: #10b981;">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Weather App</h3>
+                        <p>Интеграция с OpenWeather API для прогноза погоды в реальном времени.</p>
+                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img" style="background: #f59e0b;">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="project-info">
+                        <h3>Telegram Bot</h3>
+                        <p>Бот-помощник для школьного расписания на Python (aiogram).</p>
+                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="contact">
-  <h2>Связаться со мной</h2>
-  <p>Открыт для общения и возможностей</p>
-  <div class="contact-icons">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:example@mail.com"><i class="fas fa-envelope"></i></a>
-  </div>
-</section>
+        <section id="contact" style="text-align: center;">
+            <h2 class="section-title">Давайте общаться</h2>
+            <p style="margin-bottom: 2rem;">Я всегда открыт для новых проектов и учебных инициатив.</p>
+            <a href="mailto:example@mail.com" class="btn btn-primary">Написать мне</a>
+        </section>
+    </main>
 
-<script>
-  function toggleMenu() {
-    document.getElementById('nav').classList.toggle('active');
-  }
-</script>
+    <footer>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+        </div>
+        <p>&copy; 2024 [Имя Фамилия]. Создано для поступления в университет.</p>
+    </footer>
 
+    <script>
+        // Простая плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
