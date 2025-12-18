@@ -4,41 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dev Portfolio | Имя Фамилия</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">DevName</div>
-            <ul>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
+    <nav>
+        <div class="logo">Dev.Name</div>
+        <ul>
+            <li><a href="#about">Обо мне</a></li>
+            <li><a href="#projects">Проекты</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Привет, я <span class="highlight">Имя</span></h1>
+        <p>Fullstack разработчик, превращающий идеи в чистый код.</p>
+        <a href="#projects" class="btn">Посмотреть работы</a>
     </header>
 
-    <main>
-        <section id="hero">
-            <h1>Привет, я Junior Developer</h1>
-            <p>Создаю решения на Python и JS. Фанат чистого кода и Spotify.</p>
-        </section>
-
-        <section id="projects">
-            <h2>Мои проекты</h2>
-            <div class="grid">
-                <article class="card">
-                    <h3>Spotify API Integration</h3>
-                    <p>Веб-сервис для анализа ваших плейлистов.</p>
-                    <div class="tags"><span>JavaScript</span> <span>API</span></div>
-                    <a href="#" class="github-link">View Code</a>
-                </article>
+    <section id="projects">
+        <h2>Мои Проекты</h2>
+        <div class="project-grid">
+            <div class="project-card">
+                <h3>Project Name</h3>
+                <p>Описание того, какую проблему решил проект. Кратко и по делу.</p>
+                <div class="tech-stack">
+                    <span>React</span> <span>Node.js</span> <span>MongoDB</span>
+                </div>
+                <div class="links">
+                    <a href="#"><i class="fab fa-github"></i> Code</a>
+                    <a href="#"><i class="fas fa-external-link-alt"></i> Demo</a>
+                </div>
             </div>
-        </section>
-    </main>
+            </div>
+    </section>
 
     <footer>
-        <p>© 2025 | Построено с помощью CSS Grid и Flexbox</p>
+        <p>© 2025 | Сделано с помощью HTML/CSS</p>
+        <div class="socials">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Telegram</a>
+        </div>
     </footer>
 </body>
 </html>
