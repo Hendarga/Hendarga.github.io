@@ -1,390 +1,65 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио Абитуриента | [Ваше Имя]</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Portfolio | Future CS Student</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-color: #2563eb;
-            --secondary-color: #64748b;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--white);
-            scroll-behavior: smooth;
-        }
-
-        /* --- Навигация --- */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 500;
-            transition: var(--transition);
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        .burger {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .burger span {
-            width: 25px;
-            height: 3px;
-            background: var(--text-main);
-            border-radius: 2px;
-        }
-
-        /* --- Hero Секция --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            padding: 0 1rem;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--dark-bg);
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-        }
-
-        .btn {
-            padding: 0.8rem 2rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .btn-primary {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        .btn-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        .btn-outline {
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: var(--white);
-        }
-
-        /* --- Секции --- */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-        }
-
-        /* Навыки */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-card {
-            padding: 2rem;
-            background: var(--light-bg);
-            border-radius: 12px;
-            text-align: center;
-            transition: var(--transition);
-        }
-
-        .skill-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .skill-card i {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        /* Проекты */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .project-card:hover {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-
-        .project-img {
-            height: 200px;
-            background: #cbd5e1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-info h3 { margin-bottom: 0.5rem; }
-        .project-info p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem; }
-
-        .github-link {
-            color: var(--dark-bg);
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        /* Футер */
-        footer {
-            background: var(--dark-bg);
-            color: var(--white);
-            padding: 3rem 2rem;
-            text-align: center;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .social-links a {
-            color: var(--white);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover { color: var(--primary-color); }
-
-        /* Адаптивность */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Для упрощения в одном файле */
-            }
-            .burger { display: flex; }
-            .hero-content h1 { font-size: 2.5rem; }
-        }
-    </style>
 </head>
 <body>
-
-    <header>
-        <nav>
-            <a href="#" class="logo">DevFuture</a>
+    <nav>
+        <div class="container nav-content">
+            <a href="index.html" class="logo">DEV.STUDENT</a>
             <ul class="nav-links">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="cv.html">Резюме (CV)</a></li>
-                <li><a href="#projects">Проекты</a></li>
-                <li><a href="#skills">Навыки</a></li>
-                <li><a href="#contact">Контакты</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="cv.html">Digital CV</a></li>
+                <li><a href="mailto:your@email.com">Contact</a></li>
             </ul>
-            <div class="burger">
-                <span></span>
-                <span></span>
-                <span></span>
+        </div>
+    </nav>
+
+    <header class="hero container">
+        <div class="hero-text">
+            <h1>Aspiring <span>Software Engineer</span> & Tech Innovator.</h1>
+            <p>I build digital solutions and explore the depths of Computer Science. Currently preparing for admission to [University Name].</p>
+            <div style="display: flex; gap: 1rem;">
+                <a href="cv.html" class="btn btn-primary">Explore CV <i class="fas fa-arrow-right"></i></a>
+                <a href="#projects" class="btn btn-outline">My Projects</a>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="hero-content">
-                <h1>Привет, я [Имя Фамилия]</h1>
-                <p>Будущий студент направления "Программная инженерия". Увлекаюсь веб-разработкой и алгоритмами. Стремлюсь создавать решения, которые меняют мир.</p>
-                <div class="btn-group">
-                    <a href="cv.html" class="btn btn-primary">Посмотреть CV</a>
-                    <a href="#projects" class="btn btn-outline">Мои проекты</a>
+    <section id="projects" class="container" style="padding: 100px 0;">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <i class="fas fa-brain" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3 style="margin: 1rem 0;">Algorithm Visualizer</h3>
+                <p class="text-muted">A tool to visualize Sorting and Pathfinding algorithms. Built to understand time complexity better.</p>
+                <div style="margin-top: 1.5rem;">
+                    <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 4px;">JavaScript</span>
                 </div>
             </div>
-        </section>
-
-        <section id="skills">
-            <h2 class="section-title">Ключевые навыки</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <i class="fab fa-js"></i>
-                    <h3>JavaScript</h3>
-                    <p>Создание интерактивных веб-приложений и работа с DOM.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-python"></i>
-                    <h3>Python</h3>
-                    <p>Основы Data Science и автоматизация задач.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fab fa-react"></i>
-                    <h3>React</h3>
-                    <p>Изучаю построение компонентных интерфейсов.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>SQL</h3>
-                    <p>Проектирование простых баз данных и запросов.</p>
+            <div class="card">
+                <i class="fas fa-database" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3 style="margin: 1rem 0;">Student Manager CLI</h3>
+                <p class="text-muted">High-performance CLI tool for managing student records using Python and SQLite.</p>
+                <div style="margin-top: 1.5rem;">
+                    <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 4px;">Python</span>
                 </div>
             </div>
-        </section>
-
-        <section id="projects">
-            <h2 class="section-title">Избранные проекты</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-img" style="background: #3b82f6;">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Smart Task Manager</h3>
-                        <p>Приложение для управления задачами с локальным хранением данных.</p>
-                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background: #10b981;">
-                        <i class="fas fa-cloud-sun"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Weather App</h3>
-                        <p>Интеграция с OpenWeather API для прогноза погоды в реальном времени.</p>
-                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-img" style="background: #f59e0b;">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3>Telegram Bot</h3>
-                        <p>Бот-помощник для школьного расписания на Python (aiogram).</p>
-                        <a href="https://github.com" class="github-link"><i class="fab fa-github"></i> GitHub</a>
-                    </div>
+            <div class="card">
+                <i class="fas fa-cloud" style="font-size: 2rem; color: var(--accent);"></i>
+                <h3 style="margin: 1rem 0;">Weather Dashboard</h3>
+                <p class="text-muted">Real-time weather application using OpenWeather API with dark mode support.</p>
+                <div style="margin-top: 1.5rem;">
+                    <span style="font-size: 0.8rem; background: var(--border); padding: 4px 8px; border-radius: 4px;">React</span>
                 </div>
             </div>
-        </section>
-
-        <section id="contact" style="text-align: center;">
-            <h2 class="section-title">Давайте общаться</h2>
-            <p style="margin-bottom: 2rem;">Я всегда открыт для новых проектов и учебных инициатив.</p>
-            <a href="mailto:example@mail.com" class="btn btn-primary">Написать мне</a>
-        </section>
-    </main>
-
-    <footer>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-telegram"></i></a>
         </div>
-        <p>&copy; 2024 [Имя Фамилия]. Создано для поступления в университет.</p>
-    </footer>
+    </section>
 
-    <script>
-        // Простая плавная прокрутка
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,330 +1,91 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital CV | [Ваше Имя]</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Digital CV | [Your Name]</title>
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #1e293b;
-            --accent: #3b82f6;
-            --bg-cv: #f1f5f9;
-            --white: #ffffff;
-            --text: #334155;
-            --border: #e2e8f0;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg-cv); color: var(--text); padding: 2rem 1rem; }
-
-        .cv-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--white);
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Контролы (Верхняя панель) */
-        .cv-controls {
-            max-width: 1000px;
-            margin: 0 auto 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .btn-cv {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: 0.3s;
-        }
-
-        .btn-cv:hover { opacity: 0.9; }
-
-        /* Левая колонка */
-        .sidebar {
-            background: var(--primary);
-            color: var(--white);
-            padding: 2rem;
-        }
-
-        .profile-img {
-            width: 150px;
-            height: 150px;
-            background: #475569;
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-        }
-
-        .sidebar h2 { font-size: 1.2rem; margin: 1.5rem 0 1rem; border-bottom: 1px solid #475569; padding-bottom: 0.5rem; }
-        .contact-item { font-size: 0.9rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.8rem; }
-        
-        /* Прогресс-бары */
-        .skill-bar-container { margin-bottom: 1rem; }
-        .skill-name { font-size: 0.85rem; display: block; margin-bottom: 0.3rem; }
-        .bar-bg { background: #475569; height: 8px; border-radius: 4px; overflow: hidden; }
-        .bar-fill { 
-            background: var(--accent); 
-            height: 100%; 
-            width: 0; /* Анимация через JS */
-            transition: width 1.5s ease-in-out; 
-        }
-
-        /* Правая колонка */
-        .main-content { padding: 3rem; }
-        .header-cv h1 { font-size: 2.5rem; color: var(--primary); margin-bottom: 0.5rem; }
-        .target { color: var(--accent); font-weight: 600; margin-bottom: 2rem; }
-
-        .section-cv { margin-bottom: 2.5rem; }
-        .section-cv h3 { 
-            display: flex; 
-            align-items: center; 
-            gap: 0.5rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary);
-        }
-
-        /* Аккордеон проектов */
-        .accordion-item { border-bottom: 1px solid var(--border); margin-bottom: 1rem; }
-        .accordion-header { 
-            padding: 1rem 0; 
-            cursor: pointer; 
-            display: flex; 
-            justify-content: space-between; 
-            font-weight: 600; 
-        }
-        .accordion-content { 
-            max-height: 0; 
-            overflow: hidden; 
-            transition: max-height 0.3s ease-out;
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        /* Фильтр */
-        .filter-buttons { margin-bottom: 1rem; display: flex; gap: 0.5rem; }
-        .filter-btn { 
-            padding: 4px 12px; 
-            border: 1px solid var(--accent); 
-            background: none; 
-            border-radius: 15px; 
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-        .filter-btn.active { background: var(--accent); color: white; }
-
-        /* Таблица языков */
-        .lang-table { width: 100%; border-collapse: collapse; }
-        .lang-table td { padding: 8px 0; border-bottom: 1px solid var(--border); }
-
-        /* Печатная версия */
-        @media print {
-            .cv-controls, .filter-buttons, .back-home { display: none !important; }
-            body { background: white; padding: 0; }
-            .cv-container { box-shadow: none; grid-template-columns: 250px 1fr; width: 100%; }
-            .sidebar { background: #f8fafc !important; color: black !important; }
-            .bar-bg { border: 1px solid #ccc; }
-            .accordion-content { max-height: none !important; }
-        }
-
-        /* Адаптивность */
-        @media (max-width: 850px) {
-            .cv-container { grid-template-columns: 1fr; }
-            .sidebar { order: 2; }
-            .main-content { order: 1; padding: 2rem; }
-        }
-    </style>
 </head>
 <body>
-
-    <div class="cv-controls">
-        <a href="index.html" class="btn-cv back-home" style="background: var(--accent); text-decoration: none;">
-            <i class="fas fa-arrow-left"></i> На главную
-        </a>
-        <div style="display: flex; gap: 1rem;">
-            <button class="btn-cv" onclick="toggleLanguage()" id="langBtn">English Version</button>
-            <button class="btn-cv" onclick="window.print()">
-                <i class="fas fa-print"></i> Печать / PDF
+    <nav class="no-print">
+        <div class="container nav-content">
+            <a href="index.html" class="logo">← BACK TO HOME</a>
+            <button class="btn btn-primary" onclick="window.print()">
+                <i class="fas fa-download"></i> Download PDF
             </button>
         </div>
-    </div>
+    </nav>
 
-    <div class="cv-container" id="cv">
+    <div class="container cv-layout">
         <aside class="sidebar">
-            <div class="profile-img">
-                <i class="fas fa-user-graduate"></i>
-            </div>
-            
-            <h2 data-ru="Контакты" data-en="Contacts">Контакты</h2>
-            <div class="contact-item"><i class="fas fa-envelope"></i> example@mail.com</div>
-            <div class="contact-item"><i class="fas fa-phone"></i> +7 (900) 000-00-00</div>
-            <div class="contact-item"><i class="fas fa-location-dot"></i> Москва, Россия</div>
-            <div class="contact-item"><i class="fab fa-github"></i> github.com/username</div>
-
-            <h2 data-ru="Навыки" data-en="Technical Skills">Навыки</h2>
-            <div class="skill-bar-container">
-                <span class="skill-name">Python</span>
-                <div class="bar-bg"><div class="bar-fill" data-percent="85%"></div></div>
-            </div>
-            <div class="skill-bar-container">
-                <span class="skill-name">JavaScript</span>
-                <div class="bar-bg"><div class="bar-fill" data-percent="70%"></div></div>
-            </div>
-            <div class="skill-bar-container">
-                <span class="skill-name">HTML/CSS</span>
-                <div class="bar-bg"><div class="bar-fill" data-percent="90%"></div></div>
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <div style="width: 120px; height: 120px; background: var(--bg-card); border-radius: 50%; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 2px solid var(--accent);">
+                    <i class="fas fa-user-tie" style="font-size: 3rem; color: var(--accent);"></i>
+                </div>
+                <h2 style="margin-top: 1rem;">[Your Name]</h2>
+                <p class="text-muted">Future CS Student</p>
             </div>
 
-            <h2 data-ru="Языки" data-en="Languages">Языки</h2>
-            <table class="lang-table">
-                <tr>
-                    <td data-ru="Русский" data-en="Russian">Русский</td>
-                    <td data-ru="Родной" data-en="Native">Родной</td>
-                </tr>
-                <tr>
-                    <td data-ru="Английский" data-en="English">Английский</td>
-                    <td>B2 (Upper-Int)</td>
-                </tr>
-            </table>
+            <div class="cv-section">
+                <h2>Contact</h2>
+                <p><i class="fas fa-envelope"></i> email@example.com</p>
+                <p><i class="fab fa-github"></i> github.com/youruser</p>
+                <p><i class="fas fa-location-dot"></i> City, Country</p>
+            </div>
+
+            <div class="cv-section">
+                <h2>Skills</h2>
+                <div class="skill-item">
+                    <span>Python</span>
+                    <div class="progress-bg"><div class="progress-fill" data-done="90%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript</span>
+                    <div class="progress-bg"><div class="progress-fill" data-done="75%"></div></div>
+                </div>
+                <div class="skill-item">
+                    <span>Web Development</span>
+                    <div class="progress-bg"><div class="progress-fill" data-done="85%"></div></div>
+                </div>
+            </div>
         </aside>
 
-        <main class="main-content">
-            <header class="header-cv">
-                <h1 id="userName">[Имя Фамилия]</h1>
-                <p class="target" data-ru="Цель: Поступление на факультет ИТ" data-en="Objective: CS Faculty Admission">Цель: Поступление на факультет ИТ</p>
-            </header>
-
-            <section class="section-cv">
-                <h3 data-ru="Образование" data-en="Education"><i class="fas fa-book"></i> Образование</h3>
-                <div style="margin-bottom: 1rem;">
-                    <strong>Гимназия №123 / Профильный класс</strong><br>
-                    <small>2018 — 2025 | Средний балл: 4.9</small>
-                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Углубленное изучение математики и информатики. Призер школьных олимпиад.</p>
+        <main>
+            <section class="cv-section">
+                <h2>Education</h2>
+                <div>
+                    <h3 style="color: var(--accent);">High School Diploma</h3>
+                    <p><strong>[School Name]</strong> | 2018 - 2025</p>
+                    <p class="text-muted">GPA: 4.0 / 4.0. Focused on Advanced Mathematics and Computer Science.</p>
                 </div>
             </section>
 
-            <section class="section-cv">
-                <h3 data-ru="Проекты" data-en="Projects"><i class="fas fa-laptop-code"></i> Проекты</h3>
-                
-                <div class="filter-buttons">
-                    <button class="filter-btn active" onclick="filterProjects('all')">Все</button>
-                    <button class="filter-btn" onclick="filterProjects('js')">JavaScript</button>
-                    <button class="filter-btn" onclick="filterProjects('py')">Python</button>
-                </div>
-
-                <div id="projectAccordion">
-                    <div class="accordion-item" data-tech="js">
-                        <div class="accordion-header">
-                            <span>E-commerce Dashboard UI</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Разработка интерфейса панели управления на чистом JS. Реализована фильтрация данных и динамические графики (Canvas API).</p>
-                            <p><strong>Стек:</strong> HTML5, CSS Grid, Vanilla JS.</p>
-                        </div>
-                    </div>
-                    <div class="accordion-item" data-tech="py">
-                        <div class="accordion-header">
-                            <span>Data Scraper Tool</span>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="accordion-content">
-                            <p>Скрипт для сбора данных о ценах на технику. Результаты экспортируются в CSV/Excel.</p>
-                            <p><strong>Стек:</strong> Python, BeautifulSoup, Pandas.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section class="section-cv">
-                <h3 data-ru="Достижения" data-en="Achievements"><i class="fas fa-trophy"></i> Достижения</h3>
-                <ul style="padding-left: 1.2rem; font-size: 0.95rem;">
-                    <li>Сертификат Stepik: "Алгоритмы и структуры данных" (2023)</li>
-                    <li>Участник регионального хакатона "Digital Break"</li>
-                    <li>Золотой значок ГТО (демонстрирует дисциплину)</li>
+            <section class="cv-section">
+                <h2>Academic Achievements</h2>
+                <ul style="list-style: disc; padding-left: 20px;">
+                    <li><strong>Winner:</strong> Regional Informatics Olympiad (2024)</li>
+                    <li><strong>Certificate:</strong> CS50x by Harvard University (Online)</li>
+                    <li><strong>Volunteer:</strong> Organized school "Code Week" for 50+ students.</li>
                 </ul>
+            </section>
+
+            <section class="cv-section">
+                <h2>Personal Statement</h2>
+                <p>I am highly motivated to pursue a degree in Computer Science at <strong>[University Name]</strong>. My goal is to specialize in Artificial Intelligence and develop ethical technology that solves real-world problems. Over the past 3 years, I've dedicated 1000+ hours to coding and self-education.</p>
+            </section>
+
+            <section class="cv-section">
+                <h2>Interests</h2>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                    <span style="border: 1px solid var(--border); padding: 5px 15px; border-radius: 20px;">Machine Learning</span>
+                    <span style="border: 1px solid var(--border); padding: 5px 15px; border-radius: 20px;">Cybersecurity</span>
+                    <span style="border: 1px solid var(--border); padding: 5px 15px; border-radius: 20px;">Chess</span>
+                </div>
             </section>
         </main>
     </div>
 
-    <script>
-        // 1. Анимация прогресс-баров при загрузке
-        window.addEventListener('load', () => {
-            const fills = document.querySelectorAll('.bar-fill');
-            fills.forEach(bar => {
-                bar.style.width = bar.getAttribute('data-percent');
-            });
-        });
-
-        // 2. Логика аккордеона
-        document.querySelectorAll('.accordion-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                const icon = header.querySelector('i');
-                
-                if (content.style.maxHeight) {
-                    content.style.maxHeight = null;
-                    icon.style.transform = 'rotate(0deg)';
-                } else {
-                    content.style.maxHeight = content.scrollHeight + "px";
-                    icon.style.transform = 'rotate(180deg)';
-                }
-            });
-        });
-
-        // 3. Фильтрация проектов
-        function filterProjects(tech) {
-            const items = document.querySelectorAll('.accordion-item');
-            const btns = document.querySelectorAll('.filter-btn');
-            
-            btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            items.forEach(item => {
-                if (tech === 'all' || item.getAttribute('data-tech') === tech) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        }
-
-        // 4. Переключение языка (простая реализация)
-        let currentLang = 'ru';
-        function toggleLanguage() {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            const elements = document.querySelectorAll('[data-ru]');
-            const btn = document.getElementById('langBtn');
-
-            elements.forEach(el => {
-                el.textContent = el.getAttribute(`data-${currentLang}`);
-            });
-
-            btn.textContent = currentLang === 'ru' ? 'English Version' : 'Русская версия';
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
