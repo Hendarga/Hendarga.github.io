@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>CV | Имя Фамилия</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f1f5f9;
+    margin: 0;
+  }
+
+  .cv {
+    max-width: 1100px;
+    margin: 40px auto;
+    background: #fff;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  aside {
+    background: #1e293b;
+    color: #fff;
+    padding: 30px;
+  }
+
+  main {
+    padding: 40px;
+  }
+
+  h2 {
+    margin-top: 30px;
+  }
+
+  .skill-bar {
+    background: #334155;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+  }
+
+  .skill-bar span {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: #38bdf8;
+    transition: 1s;
+  }
+
+  .lang-switch {
+    margin-top: 20px;
+    cursor: pointer;
+    color: #38bdf8;
+  }
+
+  @media print {
+    body {
+      background: #fff;
+    }
+    .lang-switch {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .cv {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="cv">
+  <aside>
+    <img src="https://via.placeholder.com/120" alt="Фото" style="border-radius:50%;margin-bottom:20px">
+
+    <h1 id="name">Имя Фамилия</h1>
+    <p id="role">Абитуриент-программист</p>
+
+    <p><i class="fas fa-envelope"></i> example@mail.com</p>
+    <p><i class="fas fa-phone"></i> +7 900 000-00-00</p>
+    <p><i class="fas fa-location-dot"></i> Город</p>
+
+    <h2>Навыки</h2>
+    <p>JavaScript</p>
+    <div class="skill-bar"><span data-level="80"></span></div>
+    <p>Python</p>
+    <div class="skill-bar"><span data-level="70"></span></div>
+    <p>HTML / CSS</p>
+    <div class="skill-bar"><span data-level="85"></span></div>
+
+    <div class="lang-switch" onclick="toggleLang()">RU / EN</div>
+    <button onclick="window.print()">Печать / PDF</button>
+  </aside>
+
+  <main>
+    <h2 id="goal-title">Цель поступления</h2>
+    <p id="goal-text">
+      Поступление на программу
